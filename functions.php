@@ -151,3 +151,87 @@ function portfolio_pro_customize_register($wp_customize) {
     ));
 
 }
+
+
+function portfolio_customize_register($wp_customize) {
+
+    // Logo
+    $wp_customize->add_setting('portfolio_logo');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'portfolio_logo', [
+        'label' => 'Logo Upload',
+        'section' => 'title_tagline',
+        'settings' => 'portfolio_logo'
+    ]));
+
+    // Hero Title
+    $wp_customize->add_section('portfolio_hero_section', [
+        'title' => 'Hero Section',
+    ]);
+
+    $wp_customize->add_setting('hero_title', ['default' => 'Hi, I’m Saif']);
+    $wp_customize->add_control('hero_title', [
+        'label' => 'Hero Title',
+        'section' => 'portfolio_hero_section',
+        'type' => 'text',
+    ]);
+
+    $wp_customize->add_setting('hero_subtitle', ['default' => 'Web Developer']);
+    $wp_customize->add_control('hero_subtitle', [
+        'label' => 'Hero Subtitle',
+        'section' => 'portfolio_hero_section',
+        'type' => 'text',
+    ]);
+}
+add_action('customize_register', 'portfolio_customize_register');
+
+
+
+/**
+ * Display current template being used
+ * Add this to your theme's functions.php
+ */
+// add_action('wp_footer', function() {
+//     if (!current_user_can('administrator')) return;
+    
+//     global $template;
+//     $template_name = basename($template);
+//     $template_path = str_replace(get_theme_root() . '/', '', $template);
+    
+//     echo '<div style="
+//         position: fixed;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         background: #1d2327;
+//         color: #fff;
+//         padding: 10px 15px;
+//         font-family: monospace;
+//         font-size: 13px;
+//         z-index: 999999;
+//         border-top: 3px solid #2271b1;
+//     ">';
+    
+//     echo '<strong style="color: #72aee6;">Template:</strong> ' . $template_name . ' &nbsp;|&nbsp; ';
+//     echo '<strong style="color: #72aee6;">Path:</strong> ' . $template_path . ' &nbsp;|&nbsp; ';
+    
+//     // Show page type
+//     $type = 'Unknown';
+//     if (is_front_page()) $type = 'Front Page';
+//     elseif (is_home()) $type = 'Blog Home';
+//     elseif (is_single()) $type = 'Single Post';
+//     elseif (is_page()) $type = 'Page';
+//     elseif (is_archive()) $type = 'Archive';
+//     elseif (is_category()) $type = 'Category';
+//     elseif (is_tag()) $type = 'Tag';
+//     elseif (is_search()) $type = 'Search';
+//     elseif (is_404()) $type = '404';
+    
+//     echo '<strong style="color: #72aee6;">Type:</strong> ' . $type;
+    
+//     // Show post/page ID if applicable
+//     if (is_singular()) {
+//         echo ' &nbsp;|&nbsp; <strong style="color: #72aee6;">ID:</strong> ' . get_the_ID();
+//     }
+    
+//     echo '</div>';
+// });

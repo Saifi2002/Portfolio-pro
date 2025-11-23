@@ -4,6 +4,12 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); // Important for plugins and scripts ?>
+    <script>
+    if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark')
+    }
+</script>
+
 </head>
 <body <?php body_class(); ?>>
 
@@ -38,7 +44,9 @@
             )); 
             ?>
         </nav>
+        <button id="darkToggle" class="ml-4 text-2xl">🌙</button>
     </div>
+
 
     <!-- Mobile Menu (hidden by default) -->
     <nav class="mobile-navigation lg:hidden hidden bg-white border-t" id="mobile-menu">
@@ -52,6 +60,3 @@
     </nav>
 </header>
 
-<script>
-
-</script>
