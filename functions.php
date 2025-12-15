@@ -12,8 +12,6 @@ function portfolio_pro_enqueue_scripts() {
 }
 
 
-
-
 add_action('after_setup_theme', 'portfolio_pro_setup');
 function portfolio_pro_setup() {
     add_theme_support('title-tag'); // Dynamic title
